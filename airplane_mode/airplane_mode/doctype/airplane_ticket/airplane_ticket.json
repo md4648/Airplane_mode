@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{flight}-{source_airport_code}",
+ "autoname": "format:{flight}-{source_airport_code}-{###}",
  "creation": "2025-03-25 12:30:45.972460",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -148,7 +148,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-04 14:25:44.953317",
+ "modified": "2025-04-09 16:30:02.352830",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",

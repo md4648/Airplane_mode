@@ -16,10 +16,49 @@ print(ranome_letter)
 
 class AirplaneTicket(Document):
 		
+        
+		
 
 		def validate(self):
+			
+			dd=frappe.get_value("Airplane","Airbus001","capacity")
+			total_ticket=frappe.get_all("Airplane Ticket")
+			total_airbus_ticket=frappe.get_all("Airplane Ticket",filters={"flight":"Airbus001-05-04-0009"})
+			specificAirplanecapacity=frappe.get_all("Airplane Ticket",fields=["flight.airplane"])
+
+
+			# filtered=[plane for plane in specificAirplanecapacity if plane.lower() == "abebe"]
+			
+			lists=[]
+			
+			# def filtered(cls,plane,namee):
+			# 	return [plane for plane in specificAirplanecapacity if specificAirplanecapacity.airplane]
+			# 	pass
+			
+          
+            
+			for x in specificAirplanecapacity:
+				newfield=x["airplane"]
+				lists.append(newfield)
+				
+			fillterd=[plane for plane in lists if plane == "Airbus001"]
+
+			if dd-1<len(fillterd):
+				frappe.frappe.throw("There is no Availabel seats")
+            
+				
+				
+			# newfield=specificAirplanecapacity[0]['airplane']
+			
+
+
+			
 			total_amount=0
 			add_item=[]
+			
+            
+			
+
 			if not self.flight_price:
 				frappe.throw("Please Enter the Price")
 			if self.status!="Boarded":
@@ -34,7 +73,15 @@ class AirplaneTicket(Document):
 
 				add_item.append(add_onss.item)
 			self.total_price=total_amount+self.flight_price
-			self.seat=seat
+			
+          
+			# self.seat=seat
+			
+			print("Here is the the capacity of airplane Airbus001: ",dd)
+			print("Here is the total number of ticket before: ",len(total_ticket))
+			print("Here is the total number of ticket of Airbus001-05-04-0009 before: ",len(total_airbus_ticket))
+			print("Here is specefice airplane from other doctype ",len(fillterd))
+			
 			
 
   
